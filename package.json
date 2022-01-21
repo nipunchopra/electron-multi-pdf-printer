@@ -31,7 +31,59 @@
   },
   "scripts": {
     "start": "electron .",
-    "watch": "webpack --config webpack.common.js --watch"
+    "watch": "webpack --config webpack.common.js --watch",
+    "build": "webpack --config webpack.prod.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "make:linux": "electron-builder --linux",
+    "make:macos": "electron-builder --mac",
+    "make:win": "electron-builder --win --x64"
+  },
+  "build": {
+    "extends": null,
+    "productName": "PDF Printer",
+    "appId": "com.bep.pdfprinter",
+    "files": [
+      "build/**/*",
+      "public/**/*",
+      "utils/**/*",
+      "main.js",
+      "preload.js"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "public/logo.png",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 430,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "icon": "public/logo.png",
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "rpm",
+        "AppImage"
+      ],
+      "category": "Development"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -54,6 +106,7 @@
   "devDependencies": {
     "@babel/core": "^7.16.7",
     "electron": "^16.0.7",
+    "electron-builder": "^22.14.5",
     "electron-reload": "^2.0.0-alpha.1"
   }
 }

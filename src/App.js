@@ -7,10 +7,6 @@ import { StylesProvider } from "@mui/styles";
 import blue from "@mui/material/colors/blue";
 
 export default function App() {
-  const sendNotifications = () => {
-    window.electron.notification.sendNotifications("Notification from react app");
-  };
-
   const theme = createTheme({
     palette: {
       primary: {

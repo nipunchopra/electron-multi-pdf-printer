@@ -24,8 +24,10 @@ let mainWindow;
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
+    title: "PDF Printer - Bhartiya Electric Press",
     width: 850,
     height: 505,
+    icon: "./public/logo.ico",
     webPreferences: {
       nodeIntegration: false,
       worldSafeExecutionJavaScript: true,
